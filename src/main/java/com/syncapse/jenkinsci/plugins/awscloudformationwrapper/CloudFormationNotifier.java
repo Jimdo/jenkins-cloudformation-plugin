@@ -70,7 +70,7 @@ public class CloudFormationNotifier extends Notifier {
 					0,
 					stack.getParsedAwsAccessKey(envVars),
 					stack.getParsedAwsSecretKey(envVars),
-					null,
+					stack.getParsedAwsRegion(envVars),
 					false,
 					envVars
 			);
