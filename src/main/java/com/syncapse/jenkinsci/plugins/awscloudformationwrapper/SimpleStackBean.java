@@ -33,12 +33,18 @@ public class SimpleStackBean extends AbstractDescribableImpl<SimpleStackBean> {
 	 * The secret key to call Amazon's APIs
 	 */
 	private String awsSecretKey;
+	
+	/**
+	 * The AWS region containing the stack.
+	 */
+	private String awsRegion;
 
 	@DataBoundConstructor
-	public SimpleStackBean(String stackName, String awsAccessKey, String awsSecretKey) {
+	public SimpleStackBean(String stackName, String awsAccessKey, String awsSecretKey, String awsRegion) {
 		this.stackName = stackName;
 		this.awsAccessKey = awsAccessKey;
 		this.awsSecretKey = awsSecretKey;
+		this.awsRegion = awsRegion;
 	}
 
 	public String getStackName() {
@@ -53,13 +59,20 @@ public class SimpleStackBean extends AbstractDescribableImpl<SimpleStackBean> {
 		return awsSecretKey;
 	}
 
+	public String getAwsRegion() {
+		return awsRegion;
+	}
+
 	public String getParsedAwsAccessKey(EnvVars env) {
 		return env.expand(getAwsAccessKey());
 	}
 
-
 	public String getParsedAwsSecretKey(EnvVars env) {
 		return env.expand(getAwsSecretKey());
+	}
+
+	public String getParsedAwsRegion(EnvVars env) {
+		return env.expand(getAwsRegion());
 	}
 
 	@Extension
